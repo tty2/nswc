@@ -68,7 +68,7 @@ func main() {
 	}
 }
 
-// notify reads stdin line by line and sends it to the notification url
+// notify reads stdin line by line and sends it to the notification url.
 func notify(ctx context.Context, client notifier, reader *bufio.Reader, interval time.Duration) error {
 	ticker := time.NewTicker(interval)
 	defer ticker.Stop()
@@ -79,9 +79,11 @@ func notify(ctx context.Context, client notifier, reader *bufio.Reader, interval
 			line, err := reader.ReadString('\n')
 			if err != nil {
 				if errors.Is(err, io.EOF) {
-					fmt.Println("file reading completed")
+					fmt.Println("file reading completed") // nolint forbidigo: print is used on purpose
+
 					return nil
 				}
+
 				return err
 			}
 			client.Send(ctx, line)
@@ -91,6 +93,7 @@ func notify(ctx context.Context, client notifier, reader *bufio.Reader, interval
 			if !ok {
 				return errors.New("error channel has been closed")
 			}
+
 			return fmt.Errorf("nswc library error: %v", err)
 		}
 	}
