@@ -58,7 +58,7 @@ Use `make` to lint, make mocks or test project.
 
 ## Playground
 
-In order to play the library you can use `./cmd/notifier` and `./cmd/listener`.
+In order to play with the library you can use `./cmd/notifier` and `./cmd/listener`.
 
 Check  [notifier readme](./cmd/notifier/README.md)
 and  [listener readme](./cmd/listener/README.md) for more information.
