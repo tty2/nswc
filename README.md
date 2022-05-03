@@ -47,14 +47,14 @@ Use `make` to lint, make mocks or test project.
 
 ## Road map
 
-[v] HttpTransport
-[] GRPCTransport
-[] RedisTransport
-[] KafkaTransport
-[] RabbitMQTransport
-[] SNSTransport
-[] SMSTransport
-[] TelegramTransport
+- [x] HttpTransport
+- [] GRPCTransport
+- [] RedisTransport
+- [] KafkaTransport
+- [] RabbitMQTransport
+- [] SNSTransport
+- [] SMSTransport
+- [] TelegramTransport
 
 ## Playground
 
