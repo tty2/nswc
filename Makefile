@@ -1,3 +1,8 @@
+#@Build
+build-notify: ## Build notify executable.
+	@echo -e "\033[2m→ Build notify executable...\033[0m"
+	go build -o notify ./cmd/notifier/main.go
+
 #@ Test
 lint: ## Run linters only.
 	@echo -e "\033[2m→ Running linters...\033[0m"
@@ -9,10 +14,15 @@ test: ## Run go tests for files with tests.
 
 check: lint test ## Run full check: lint and test.
 
+listen: ## Runs http server that listens on port 8080.
+	@echo -e "\033[2m→ Http server is running and listens to port 8080...\033[0m"
+	go run ./cmd/listener/main.go
+
 ##@ Generate
 mocks: ## Generate mocks.
 	@echo -e "\033[2m→ Generating mocks...\033[0m"
 	mockgen -source=client.go -destination=mocks/client_mock.go -package=mocks
+	mockgen -source=cmd/notifier/main.go -destination=cmd/notifier/mocks/main_mock.go -package=mocks
 	
 ##@ Other
 #------------------------------------------------------------------------------
@@ -21,4 +31,4 @@ help:  ## Display help
 #------------- <https://suva.sh/posts/well-documented-makefiles> --------------
 
 .DEFAULT_GOAL := help
-.PHONY: help lint test check mocks
+.PHONY: help lint test check mocks build-notify listen

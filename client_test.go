@@ -33,7 +33,7 @@ func Test_Client_Notify(t *testing.T) {
 		c := Client{
 			transportClient: transportMock,
 			workers:         workerpool.New(2),
-			ErrChan:         make(chan error),
+			errChan:         make(chan error),
 		}
 
 		rq := require.New(t)
@@ -42,11 +42,11 @@ func Test_Client_Notify(t *testing.T) {
 		go func(ctx context.Context) {
 			for {
 				select {
-				case err := <-c.ErrChan:
+				case err := <-c.errChan:
 					errs = append(errs, err)
 				case <-ctx.Done():
 					c.workers.Stop()
-					close(c.ErrChan)
+					close(c.errChan)
 
 					return
 				}

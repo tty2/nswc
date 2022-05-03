@@ -29,7 +29,7 @@ func New(connStr string, opts ...options) (*Client, error) {
 	client := Client{
 		transportClient: transport,
 		workers:         workerpool.New(cfg.MaxWorkers),
-		ErrChan:         make(chan error),
+		errChan:         make(chan error),
 	}
 
 	return &client, nil
