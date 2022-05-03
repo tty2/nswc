@@ -18,7 +18,7 @@ type Client struct {
 	errChan         chan error
 }
 
-// Notify prepares notification to send to specified url.
+// Send prepares notification to send to specified url.
 func (c *Client) Send(ctx context.Context, msg string) {
 	c.workers.Submit(func() {
 		err := c.transportClient.Notify(ctx, msg)
@@ -28,6 +28,7 @@ func (c *Client) Send(ctx context.Context, msg string) {
 	})
 }
 
+// ReadErrors returns error channel.
 func (c *Client) ReadErrors() <-chan error {
 	return c.errChan
 }
