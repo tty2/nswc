@@ -48,13 +48,13 @@ Use `make` to lint, make mocks or test project.
 ## Road map
 
 - [x] HttpTransport
-- [] GRPCTransport
-- [] RedisTransport
-- [] KafkaTransport
-- [] RabbitMQTransport
-- [] SNSTransport
-- [] SMSTransport
-- [] TelegramTransport
+- [ ] GRPCTransport
+- [ ] RedisTransport
+- [ ] KafkaTransport
+- [ ] RabbitMQTransport
+- [ ] SNSTransport
+- [ ] SMSTransport
+- [ ] TelegramTransport
 
 ## Playground
 
